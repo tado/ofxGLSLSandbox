@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		1876376016D4D63500AD4274 /* ofxGLSLSandbox.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1876375E16D4D63500AD4274 /* ofxGLSLSandbox.cpp */; };
 		1876376316D4D94800AD4274 /* shader.frag in Sources */ = {isa = PBXBuildFile; fileRef = 1876376216D4D94800AD4274 /* shader.frag */; };
+		1876376816D4DE3700AD4274 /* test.frag in Sources */ = {isa = PBXBuildFile; fileRef = 1876376716D4DE3700AD4274 /* test.frag */; };
 		BBAB23CB13894F3D00AA2426 /* GLUT.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = BBAB23BE13894E4700AA2426 /* GLUT.framework */; };
 		E4328149138ABC9F0047C5CB /* openFrameworksDebug.a in Frameworks */ = {isa = PBXBuildFile; fileRef = E4328148138ABC890047C5CB /* openFrameworksDebug.a */; };
 		E45BE97B0E8CC7DD009D7055 /* AGL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E45BE9710E8CC7DD009D7055 /* AGL.framework */; };
@@ -66,6 +67,7 @@
 		1876375F16D4D63500AD4274 /* ofxGLSLSandbox.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ofxGLSLSandbox.h; sourceTree = "<group>"; };
 		1876376116D4D8B600AD4274 /* install.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; name = install.xml; path = ../install.xml; sourceTree = "<group>"; };
 		1876376216D4D94800AD4274 /* shader.frag */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; name = shader.frag; path = bin/data/shader.frag; sourceTree = SOURCE_ROOT; };
+		1876376716D4DE3700AD4274 /* test.frag */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; name = test.frag; path = bin/data/test.frag; sourceTree = SOURCE_ROOT; };
 		BBAB23BE13894E4700AA2426 /* GLUT.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GLUT.framework; path = ../../../libs/glut/lib/osx/GLUT.framework; sourceTree = "<group>"; };
 		E4328143138ABC890047C5CB /* openFrameworksLib.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = openFrameworksLib.xcodeproj; path = ../../../libs/openFrameworksCompiled/project/osx/openFrameworksLib.xcodeproj; sourceTree = SOURCE_ROOT; };
 		E45BE9710E8CC7DD009D7055 /* AGL.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AGL.framework; path = /System/Library/Frameworks/AGL.framework; sourceTree = "<absolute>"; };
@@ -77,7 +79,7 @@
 		E45BE9770E8CC7DD009D7055 /* CoreServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreServices.framework; path = /System/Library/Frameworks/CoreServices.framework; sourceTree = "<absolute>"; };
 		E45BE9790E8CC7DD009D7055 /* OpenGL.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGL.framework; path = /System/Library/Frameworks/OpenGL.framework; sourceTree = "<absolute>"; };
 		E45BE97A0E8CC7DD009D7055 /* QuickTime.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuickTime.framework; path = /System/Library/Frameworks/QuickTime.framework; sourceTree = "<absolute>"; };
-		E4B69B5B0A3A1756003C02F2 /* myGLSLSandboxDebug.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = myGLSLSandboxDebug.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		E4B69B5B0A3A1756003C02F2 /* GLSLSandboxExample.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; name = GLSLSandboxExample.app; path = /Users/tado/Documents/openFrameworks/of_v0.7.4_osx_release/apps/myApps/GLSLSandboxExample/bin/GLSLSandboxExample.app; sourceTree = "<absolute>"; };
 		E4B69E1D0A3A1BDC003C02F2 /* main.cpp */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.cpp.cpp; name = main.cpp; path = src/main.cpp; sourceTree = SOURCE_ROOT; };
 		E4B69E1E0A3A1BDC003C02F2 /* testApp.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.cpp; fileEncoding = 30; name = testApp.cpp; path = src/testApp.cpp; sourceTree = SOURCE_ROOT; };
 		E4B69E1F0A3A1BDC003C02F2 /* testApp.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; name = testApp.h; path = src/testApp.h; sourceTree = SOURCE_ROOT; };
@@ -203,7 +205,6 @@
 				E4EEC9E9138DF44700A80321 /* openFrameworks */,
 				BB4B014C10F69532006C3DED /* addons */,
 				E45BE5980E8CC70C009D7055 /* frameworks */,
-				E4B69B5B0A3A1756003C02F2 /* myGLSLSandboxDebug.app */,
 			);
 			sourceTree = "<group>";
 		};
@@ -214,6 +215,7 @@
 				E4B69E1E0A3A1BDC003C02F2 /* testApp.cpp */,
 				E4B69E1F0A3A1BDC003C02F2 /* testApp.h */,
 				1876376216D4D94800AD4274 /* shader.frag */,
+				1876376716D4DE3700AD4274 /* test.frag */,
 			);
 			path = src;
 			sourceTree = SOURCE_ROOT;
@@ -246,7 +248,7 @@
 			);
 			name = GLSLSandboxExample;
 			productName = myOFApp;
-			productReference = E4B69B5B0A3A1756003C02F2 /* myGLSLSandboxDebug.app */;
+			productReference = E4B69B5B0A3A1756003C02F2 /* GLSLSandboxExample.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -315,6 +317,7 @@
 				E4B69E210A3A1BDC003C02F2 /* testApp.cpp in Sources */,
 				1876376016D4D63500AD4274 /* ofxGLSLSandbox.cpp in Sources */,
 				1876376316D4D94800AD4274 /* shader.frag in Sources */,
+				1876376816D4DE3700AD4274 /* test.frag in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

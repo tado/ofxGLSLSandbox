@@ -2,7 +2,11 @@
 
 //--------------------------------------------------------------
 void testApp::setup(){
-    glslSandbox = new ofxGLSLSandbox(320, 240);
+    glslSandbox = new ofxGLSLSandbox();
+    glslSandbox->setResolution(512, 384);
+
+    glslSandbox->loadFile("shader");
+    //glslSandbox->loadFile("test");
 }
 
 //--------------------------------------------------------------
