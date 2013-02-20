@@ -1,0 +1,21 @@
+<install>
+	<name>ofxGLSLSandbox</name>
+	<version>0.01</version>
+	<author>atsushi tadokoro</author>
+	<url>http://yoppa.org/</url>
+	
+	<add>
+		
+		<!-- 	=====================================================================	-->
+		<!--	========================== add per project using this addon =========	-->
+		<!-- 	=====================================================================	-->
+        
+		<src>
+			<folder name="addons/ofxGLSLSandbox/src">
+				<file>../../../addons/ofxGLSLSandbox/src/ofxGLSLSandbox.h</file>
+				<file>../../../addons/ofxGLSLSandbox/src/ofxGLSLSandbox.cpp</file>
+			</folder>
+		</src>
+	</add>
+	
+</install>
