@@ -37,6 +37,7 @@ void ofxGLSLSandbox::draw(){
     shader.begin();
     shader.setUniform1f("time", time);
     shader.setUniform2fv("resolution", resolution);
+    shader.setUniform2fv("mouse", mousePoint);
     ofRect(0, 0, ofGetWidth(), ofGetHeight());
     shader.end();
     fbo.end();
