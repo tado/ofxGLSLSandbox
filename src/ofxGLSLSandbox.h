@@ -13,6 +13,8 @@ class ofxGLSLSandbox {
     
 public:
     ofxGLSLSandbox(int width = 512, int height = 384);
+    void setResolution(int width, int height);
+    void loadFile(const string& shaderfile);
     void draw();
     void mouseMoved(int x, int y );
         

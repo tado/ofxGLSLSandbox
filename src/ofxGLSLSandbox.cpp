@@ -14,9 +14,18 @@ ofxGLSLSandbox::ofxGLSLSandbox(int _width, int _height){
     mouse.x = width/2;
     mouse.y = height/2;
     
-    // load shader file in "bin/data/shader.frag"
     shader.load("shader");
     fbo.allocate(width, height);
+}
+
+void ofxGLSLSandbox::setResolution(int _width, int _height){
+    width = _width;
+    height = _height;
+    fbo.allocate(width, height);
+}
+
+void ofxGLSLSandbox::loadFile(const string& shaderfile){
+    shader.load(shaderfile);
 }
 
 void ofxGLSLSandbox::draw(){
