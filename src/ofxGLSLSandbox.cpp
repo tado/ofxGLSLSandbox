@@ -29,7 +29,6 @@ void ofxGLSLSandbox::loadFile(const string& shaderfile){
 }
 
 void ofxGLSLSandbox::draw(){
-    float scale = 4.0;
     float resolution[] = {width, height};
     float mousePoint[] = {mouse.x, mouse.y};
     float time = ofGetElapsedTimef();
