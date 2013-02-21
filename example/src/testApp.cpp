@@ -2,28 +2,37 @@
 
 //--------------------------------------------------------------
 void testApp::setup(){
+    // create new ofxGLSLSandbox instance
     glslSandbox = new ofxGLSLSandbox();
     
     // setup shader width and height
-    glslSandbox->setResolution(512, 384);
+    glslSandbox->setResolution(512, 320);
     
     // load fragment shader file (must put in bin/data folder)
-    glslSandbox->loadFile("shader");
+    glslSandbox->loadFile("test");
 }
 
 //--------------------------------------------------------------
 void testApp::update(){
-    
+
 }
 
 //--------------------------------------------------------------
 void testApp::draw(){
     glslSandbox->draw();
+    ofSetHexColor(0xffffff);
+    ofDrawBitmapString(ofToString(ofGetFrameRate(), 4), 10, 10);
 }
 
 //--------------------------------------------------------------
 void testApp::keyPressed(int key){
-    ofToggleFullscreen();
+    switch (key) {
+        case 'f':
+            ofToggleFullscreen();
+            break;
+        default:
+            break;
+    }
 }
 
 //--------------------------------------------------------------
