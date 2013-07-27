@@ -28,6 +28,11 @@ void ofxGLSLSandbox::loadFile(const string& shaderfile){
     shader.load(shaderfile);
 }
 
+void ofxGLSLSandbox::openFile(const string& shaderfile){
+  string command = "open ../../../data/" + shaderfile;
+  system(command.c_str());
+}
+
 void ofxGLSLSandbox::draw(){
     float resolution[] = {width, height};
     float mousePoint[] = {mouse.x, mouse.y};

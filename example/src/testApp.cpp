@@ -9,7 +9,7 @@ void testApp::setup(){
     glslSandbox->setResolution(512, 320);
     
     // load fragment shader file (must put in bin/data folder)
-    glslSandbox->loadFile("test");
+    glslSandbox->loadFile("shader");
 }
 
 //--------------------------------------------------------------
@@ -21,7 +21,8 @@ void testApp::update(){
 void testApp::draw(){
     glslSandbox->draw();
     ofSetHexColor(0xffffff);
-    ofDrawBitmapString(ofToString(ofGetFrameRate(), 4), 10, 10);
+    ofDrawBitmapString("[f] Toggle fullscreen, [o] Open shader file on external editor, [r] Reload shader", 10, 15);
+    ofDrawBitmapString(ofToString(ofGetFrameRate(), 4), 10, 30);
 }
 
 //--------------------------------------------------------------
@@ -30,6 +31,11 @@ void testApp::keyPressed(int key){
         case 'f':
             ofToggleFullscreen();
             break;
+        case 'o': // Open shader file on external editor.
+            glslSandbox->openFile("shader.frag");
+            break;
+        case 'r': // Reload shader
+            glslSandbox->loadFile("shader");
         default:
             break;
     }

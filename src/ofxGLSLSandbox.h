@@ -15,9 +15,10 @@ public:
     ofxGLSLSandbox(int width = 512, int height = 384);
     void setResolution(int width, int height);
     void loadFile(const string& shaderfile);
+    void openFile(const string& shaderfile);
     void draw();
     void mouseMoved(int x, int y );
-        
+    
     ofShader shader;
     ofFbo fbo;
     float width, height;
