@@ -11,10 +11,6 @@
 ofxGLSLSandbox::ofxGLSLSandbox(int _width, int _height){
     width = _width;
     height = _height;
-    mouse.x = width/2;
-    mouse.y = height/2;
-    
-    shader.load("shader");
     fbo.allocate(width, height);
 }
 
