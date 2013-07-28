@@ -6,7 +6,7 @@ void testApp::setup(){
     glslSandbox = new ofxGLSLSandbox();
     
     // setup shader width and height
-    glslSandbox->setResolution(512, 320);
+    glslSandbox->setResolution(1024,640);
     
     // load fragment shader file (must put in bin/data folder)
     glslSandbox->loadFile("shader");
