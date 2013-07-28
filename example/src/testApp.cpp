@@ -48,7 +48,8 @@ void testApp::keyReleased(int key){
 
 //--------------------------------------------------------------
 void testApp::mouseMoved(int x, int y ){
-
+    // update mouse position
+    glslSandbox->mouseMoved(mouseX, mouseY);
 }
 
 //--------------------------------------------------------------

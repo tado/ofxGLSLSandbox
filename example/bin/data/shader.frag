@@ -1,27 +1,27 @@
-// Playing around with Lissajous curves.
+//Just added some history for effect... Stuthelotusguy
 #ifdef GL_ES
 precision mediump float;
 #endif
 
 uniform float time;
+uniform vec2 mouse;
 uniform vec2 resolution;
-
-const int num = 200;
+uniform sampler2D bb;
 
 void main( void ) {
-    float sum = 0.0;
-    
-    float size = resolution.x / 800.0;
-    
-    for (int i = 0; i < num; ++i) {
-        vec2 position = resolution / 4.0;
-    float t = (float(i) + time) / 8.0;
-    float c = float(i) * 4.0;
-        position.x += tan(8.0 * t + c) * resolution.x * 0.2;
-        position.y += sin(t) * resolution.y * .8;
+    float radius = .1;
+    vec2 lightDir = mouse - (gl_FragCoord.xy / resolution.xy);
+    lightDir.x *= resolution.x / resolution.y;
+    float D = length(lightDir);
 
-        sum += size / length(gl_FragCoord.xy - position);
-    }
+    vec2 L = normalize(lightDir);
+
+
+    float md = max(D - radius, 0.) / radius + 1.;
+    float at = 1. / (md*md);
+    at = (at - .25)/(1.-.25);
+    at = max(at, 0.);
     
-    gl_FragColor = vec4(sum * 0.1, sum * 0.5, sum, 1);
+    gl_FragColor = vec4(vec3(at), 1.) + 0.975 * texture2D(bb, (gl_FragCoord.xy / resolution.xy));
+    
 }

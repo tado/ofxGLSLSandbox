@@ -22,5 +22,5 @@ public:
     ofShader shader;
     ofFbo fbo;
     float width, height;
-    ofVec2f mouse;
+    ofPoint mouse;
 };

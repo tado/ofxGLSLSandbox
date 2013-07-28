@@ -29,8 +29,8 @@ void ofxGLSLSandbox::loadFile(const string& shaderfile){
 }
 
 void ofxGLSLSandbox::openFile(const string& shaderfile){
-  string command = "open ../../../data/" + shaderfile;
-  system(command.c_str());
+    string command = "open ../../../data/" + shaderfile;
+    system(command.c_str());
 }
 
 void ofxGLSLSandbox::draw(){
@@ -51,6 +51,6 @@ void ofxGLSLSandbox::draw(){
 }
 
 void ofxGLSLSandbox::mouseMoved(int x, int y){
-    mouse.x = x;
-    mouse.y = y;
+    mouse.x = float(x) / width / 2.0;
+    mouse.y = 1.0 - float(y) / height / 2.0;
 }
