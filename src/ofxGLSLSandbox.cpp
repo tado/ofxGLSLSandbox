@@ -46,6 +46,21 @@ void ofxGLSLSandbox::draw(){
     fbo.draw(0, ofGetHeight(), ofGetWidth(), -ofGetHeight());
 }
 
+void ofxGLSLSandbox::keyPressed(int key){
+    switch (key) {
+        case 'f':
+            ofToggleFullscreen();
+            break;
+        case 'o': // Open shader file on external editor.
+            openFile("shader.frag");
+            break;
+        case 'r': // Reload shader
+            loadFile("shader");
+        default:
+            break;
+    }
+}
+
 void ofxGLSLSandbox::mouseMoved(int x, int y){
     mouse.x = float(x) / width / 2.0;
     mouse.y = 1.0 - float(y) / height / 2.0;

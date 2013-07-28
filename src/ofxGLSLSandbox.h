@@ -17,7 +17,8 @@ public:
     void loadFile(const string& shaderfile);
     void openFile(const string& shaderfile);
     void draw();
-    void mouseMoved(int x, int y );
+    void keyPressed(int key);
+    void mouseMoved(int x, int y);
     
     ofShader shader;
     ofFbo fbo;

@@ -27,18 +27,7 @@ void testApp::draw(){
 
 //--------------------------------------------------------------
 void testApp::keyPressed(int key){
-    switch (key) {
-        case 'f':
-            ofToggleFullscreen();
-            break;
-        case 'o': // Open shader file on external editor.
-            glslSandbox->openFile("shader.frag");
-            break;
-        case 'r': // Reload shader
-            glslSandbox->loadFile("shader");
-        default:
-            break;
-    }
+    glslSandbox->keyPressed(key);
 }
 
 //--------------------------------------------------------------
