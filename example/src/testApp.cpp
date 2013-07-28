@@ -19,7 +19,9 @@ void testApp::update(){
 
 //--------------------------------------------------------------
 void testApp::draw(){
+    // draw shader
     glslSandbox->draw();
+
     ofSetHexColor(0xffffff);
     ofDrawBitmapString("[f] Toggle fullscreen, [o] Open shader file on external editor, [r] Reload shader", 10, 15);
     ofDrawBitmapString(ofToString(ofGetFrameRate(), 4), 10, 30);
@@ -27,6 +29,7 @@ void testApp::draw(){
 
 //--------------------------------------------------------------
 void testApp::keyPressed(int key){
+    // set key actions
     glslSandbox->keyPressed(key);
 }
 
