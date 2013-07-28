@@ -62,6 +62,6 @@ void ofxGLSLSandbox::keyPressed(int key){
 }
 
 void ofxGLSLSandbox::mouseMoved(int x, int y){
-    mouse.x = float(x) / width / 2.0;
-    mouse.y = 1.0 - float(y) / height / 2.0;
+    mouse.x = float(x) / width * (width / ofGetWidth());
+    mouse.y = 1.0 - float(y) / height * (height / ofGetHeight());
 }
