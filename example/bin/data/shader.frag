@@ -28,8 +28,8 @@ vec3 getSurfacePosition(vec2 coord) {
     for (int k=0; k<5; k++) {
         index += 1.0;
         Sphere_center = vec3(screen_center.x + mov_radius * sin(time*index),
-                     screen_center.y + mov_radius * cos(time*(5.0-index)*1.013),
-                     0.0);
+           screen_center.y + mov_radius * cos(time*(5.0-index)*1.013),
+           0.0);
         
         tmpv2 = Sphere_center.xy - coord.xy;
         acc += Sphere_radius/length(tmpv2);
@@ -42,14 +42,14 @@ vec3 getSurfacePosition(vec2 coord) {
         acc = (Sphere_radius * acc)/(Sphere_radius*0.30 + acc);
         acc = (Sphere_radius * acc)/(Sphere_radius*0.20 + acc);
         
-    } else {
-      acc = -200.0;
-    }
-        
-    return vec3(coord, acc);
-}
+        } else {
+          acc = -200.0;
+      }
+      
+      return vec3(coord, acc);
+  }
 
-void main( void ) {
+  void main( void ) {
 
     vec2 screen_center;
 
@@ -126,64 +126,64 @@ void main( void ) {
         SurfDY.z *= 1.0;
         
         SurfaceNormal = normalize(cross(SurfDX - SurfacePosition, SurfDY - SurfacePosition));
-    } else {
-        SurfaceNormal = vec3(0.0,0.0,0.25);
+        } else {
+            SurfaceNormal = vec3(0.0,0.0,0.25);
+        }
+
+        
+        /***********************************************************/
+        
+        LightColor = vec3(.0,.0,.0);
+        
+        LightPosition[0] = vec3(mouse.xy * resolution.xy, Sphere_radius*3.0);
+        LightPosition[1] = vec3(screen_center.x + cos(time*0.92) * mov_radius,
+            screen_center.y - cos(time*1.011)* mov_radius,
+            Sphere_radius* 8.0 * cos(time*1.013));
+        LightPosition[2] = vec3(screen_center.x + sin(time*1.019) * mov_radius,
+            screen_center.y - sin(time*1.209) * mov_radius,
+            Sphere_radius* 4.0 * (1.0 + cos(time*1.007)));
+        
+        for (int i=0; i<3; i++) {
+            LightDirection = normalize(LightPosition[i] - SurfacePosition);
+            
+            /***********************************************************/
+            /* Diffuse Light                                           */
+            /***********************************************************/
+            
+            DiffuseLightIntensity = clamp(dot(LightDirection, SurfaceNormal),.0,1.0);
+            
+            /***********************************************************/
+            /* Specular Light                                          */
+            /***********************************************************/
+            
+            SpecularDirection = LightDirection - 2.0 * SurfaceNormal * dot(LightDirection, SurfaceNormal);
+            
+            SpecularLightIntensity = clamp(dot(ViewDirection, SpecularDirection),.0,1.0);
+            
+            SpecularLightIntensity *= SpecularLightIntensity*SpecularLightIntensity;
+            SpecularLightIntensity *= SpecularLightIntensity*SpecularLightIntensity;
+            SpecularLightIntensity *= SpecularLightIntensity*SpecularLightIntensity;
+            SpecularLightIntensity *= SpecularLightIntensity*SpecularLightIntensity;
+
+            LightColor += DiffuseLightColor[i] * DiffuseLightIntensity +
+            SpecularLightColor[i] * SpecularLightIntensity;
+            
+            AmbientLightIntensity += clamp(DiffuseLightIntensity,.0,.5);
+        }
+        
+        
+        /***********************************************************/
+        /* Ambient Light                                           */
+        /***********************************************************/
+
+        AmbientLightIntensity = 1.0 - AmbientLightIntensity;
+        
+        
+        /***********************************************************/
+        /* Lighting Finalizing                                     */
+        /***********************************************************/
+        
+        LightColor += AmbientLightIntensity*AmbientLightColor;
+        
+        gl_FragColor = vec4(LightColor,1.0);
     }
-
-    
-        /***********************************************************/
-    
-    LightColor = vec3(.0,.0,.0);
-    
-    LightPosition[0] = vec3(mouse.xy * resolution.xy, Sphere_radius*3.0);
-    LightPosition[1] = vec3(screen_center.x + cos(time*0.92) * mov_radius,
-                screen_center.y - cos(time*1.011)* mov_radius,
-                Sphere_radius* 8.0 * cos(time*1.013));
-    LightPosition[2] = vec3(screen_center.x + sin(time*1.019) * mov_radius,
-                screen_center.y - sin(time*1.209) * mov_radius,
-                Sphere_radius* 4.0 * (1.0 + cos(time*1.007)));
-    
-    for (int i=0; i<3; i++) {
-        LightDirection = normalize(LightPosition[i] - SurfacePosition);
-        
-        /***********************************************************/
-        /* Diffuse Light                                           */
-        /***********************************************************/
-        
-        DiffuseLightIntensity = clamp(dot(LightDirection, SurfaceNormal),.0,1.0);
-        
-        /***********************************************************/
-        /* Specular Light                                          */
-        /***********************************************************/
-        
-        SpecularDirection = LightDirection - 2.0 * SurfaceNormal * dot(LightDirection, SurfaceNormal);
-    
-        SpecularLightIntensity = clamp(dot(ViewDirection, SpecularDirection),.0,1.0);
-        
-        SpecularLightIntensity *= SpecularLightIntensity*SpecularLightIntensity;
-        SpecularLightIntensity *= SpecularLightIntensity*SpecularLightIntensity;
-        SpecularLightIntensity *= SpecularLightIntensity*SpecularLightIntensity;
-        SpecularLightIntensity *= SpecularLightIntensity*SpecularLightIntensity;
-
-        LightColor += DiffuseLightColor[i] * DiffuseLightIntensity +
-                     SpecularLightColor[i] * SpecularLightIntensity;
-        
-        AmbientLightIntensity += clamp(DiffuseLightIntensity,.0,.5);
-    }
-    
-    
-    /***********************************************************/
-    /* Ambient Light                                           */
-    /***********************************************************/
-
-    AmbientLightIntensity = 1.0 - AmbientLightIntensity;
-    
-    
-    /***********************************************************/
-    /* Lighting Finalizing                                     */
-    /***********************************************************/
-    
-    LightColor += AmbientLightIntensity*AmbientLightColor;
-    
-    gl_FragColor = vec4(LightColor,1.0);
-}
